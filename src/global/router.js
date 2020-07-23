@@ -24,7 +24,7 @@ const routes = [
   }
 ]
 
-const base = process.env.NODE_ENV === 'development' ? '/' : 'https://greatbear412.github.io/'
+const base = process.env.NODE_ENV === 'development' ? '/' : 'greatbear412.github.io/'
 
 const router = new VueRouter({
   mode: 'history',
