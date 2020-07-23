@@ -4,6 +4,8 @@ const Note = () => import('@/pages/Note.vue')
 
 Vue.use(VueRouter)
 
+console.log(process.env.BASE_URL)
+
 const routes = [
   {
     path: '/',
@@ -22,9 +24,11 @@ const routes = [
   }
 ]
 
+const base = process.env.NODE_ENV === 'development' ? '/' : 'https://greatbear412.github.io/'
+
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
+  base: base,
   routes
 })
 
