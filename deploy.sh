@@ -4,11 +4,7 @@ set -e
 
 npm run build
 
-rm -rf js
-rm -rf css
-rm -rf fonts
-
-mv ./dist/* ./
+mv ./dist/index.html ./index.html
 
 git add .
 git commit -m "deploy"
