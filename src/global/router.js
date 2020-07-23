@@ -24,11 +24,9 @@ const routes = [
   }
 ]
 
-const base = process.env.NODE_ENV === 'development' ? '/' : '/Simple-Note/'
-
 const router = new VueRouter({
   mode: 'history',
-  base: base,
+  base: process.env.BASE_URL,
   routes
 })
 
