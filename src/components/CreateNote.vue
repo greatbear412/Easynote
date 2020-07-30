@@ -4,37 +4,36 @@
       <tag></tag>
       <input class="tags" type="text" v-model="tag" />
     </p>
+    <div class="date-box" v-if="showDate">
+      <el-date-picker
+        v-model="date"
+        type="daterange"
+        range-separator="~"
+        start-placeholder="开始"
+        end-placeholder="结束"
+        prefix-icon="date-icon el-icon-date"
+        value-format="yyyy-MM-dd"
+        format="yyyy年MM月dd日"
+      ></el-date-picker>
+    </div>
     <textarea class="content" cols="30" rows="10" v-model="content"></textarea>
   </div>
 </template>
 
 <script>
-import cache from '@/api/cache'
 import Tag from './tag'
 export default {
   name: 'CreateNote',
   data () {
     return {
       tag: '',
-      content: ''
+      date: ['', ''],
+      content: '',
+      showDate: this.$parent.showDate
     }
   },
   components: {
     tag: Tag
-  },
-  methods: {
-    create () {
-      cache
-        .createNotes(this.tag, this.content)
-        .then(res => {
-          this.clear()
-        })
-        .catch(err => console.log(err))
-    },
-    clear () {
-      this.tag = ''
-      this.content = ''
-    }
   }
 }
 </script>
@@ -88,6 +87,17 @@ export default {
     height: 12px;
     background-color: #6fb0be;
     -webkit-border-radius: 8px;
+  }
+}
+
+.date-box {
+  .el-range-editor.el-input__inner {
+    border: none;
+  }
+
+  /deep/ .date-icon {
+    font-size: 18px;
+    color: #6eb0be;
   }
 }
 </style>

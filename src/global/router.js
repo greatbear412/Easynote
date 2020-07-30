@@ -1,10 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 const Note = () => import('@/pages/Note.vue')
+const Calendar = () => import('@/pages/Calendar.vue')
 
 Vue.use(VueRouter)
-
-console.log(process.env.BASE_URL)
 
 const routes = [
   {
@@ -21,6 +20,11 @@ const routes = [
     path: '/note',
     name: 'note',
     component: Note
+  },
+  {
+    path: '/calendar',
+    name: 'calendar',
+    component: Calendar
   }
 ]
 

@@ -1,17 +1,25 @@
 <template>
     <div class="header">
         <div class="main">
-            <div class="title">Simple Notee</div>
+            <router-link class="title" :to="{ name: item.address}" v-for="item in navs" :key="item.title">{{item.title}}</router-link>
         </div>
     </div>
 </template>
 
 <script>
+const navs = [{
+  title: 'Simple Note',
+  address: 'note'
+}, {
+  title: 'Simple Calendar',
+  address: 'calendar'
+}]
 export default {
   name: 'Header',
   data () {
     return {
-      showMenu: false
+      showMenu: false,
+      navs: navs
     }
   },
   computed: {

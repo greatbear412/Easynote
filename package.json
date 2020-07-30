@@ -6,13 +6,14 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "npm run serve"
+    "start": "vue-cli-service serve --port 8080"
   },
   "dependencies": {
     "babel-plugin-transform-remove-console": "^6.9.4",
     "core-js": "^3.6.5",
     "element-ui": "^2.13.2",
     "vue": "^2.6.11",
+    "vue-fullcalendar": "^1.0.9",
     "vue-router": "^3.1.6",
     "vuex": "^3.4.0"
   },

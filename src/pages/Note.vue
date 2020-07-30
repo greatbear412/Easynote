@@ -24,14 +24,13 @@ import cache from '@/api/cache'
 import CreateNote from '@/components/CreateNote'
 import NoteItem from '@/components/NoteItem'
 export default {
-  name: 'note',
+  name: 'Note',
   components: {
-    NoteItem: NoteItem
+    'note-item': NoteItem
   },
   data () {
     return {
-      nodeData: [],
-      key: 0
+      nodeData: []
     }
   },
   mounted () {
@@ -42,19 +41,22 @@ export default {
   methods: {
     getNotes () {
       cache
-        .getNotes()
+        .getData('note')
         .then(res => {
-          console.log(res)
-          this.nodeData = res
+          this.nodeData = res.map(item => {
+            item.tags = item.tags.split(' ')
+            return item
+          })
         })
         .catch(err => console.log(err))
     },
     open () {
       const h = this.$createElement
       this.$msgbox({
-        message: h(CreateNote, { key: this.key++ }),
+        message: h(CreateNote, { key: cache.key++ }),
         confirmButtonText: '提交',
         confirmButtonClass: 'sn-primary-btn',
+        showDate: false,
         beforeClose: (action, instance, done) => {
           if (action === 'confirm') {
             const data = instance.$children[instance.$children.length - 1]
@@ -70,10 +72,7 @@ export default {
     create (tag, content) {
       cache
         .createNotes(tag, content)
-        .then(res => {
-          this.clear()
-          this.$emit('update-node-list')
-        })
+        .then()
         .catch(err => console.log(err))
     }
   }

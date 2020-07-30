@@ -18,6 +18,8 @@ export default {
 </script>
 
 <style lang="less">
+@theme-color:#6fb0be;
+@theme-color-deep:#52a9bb;
 body {
   padding: 0;
   margin: 0;
@@ -32,7 +34,7 @@ body {
   overflow: auto;
   left: 0;
   right: 0;
-  padding-left: 40vh;
+  padding: 0 40vh;
   text-align: left;
   &::-webkit-scrollbar {
     width: 8px;
@@ -45,11 +47,11 @@ body {
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #6fb0be;
+    background: @theme-color;
   }
   &::-webkit-scrollbar-thumb:vertical {
     height: 12px;
-    background-color: #6fb0be;
+    background-color: @theme-color;
     -webkit-border-radius: 8px;
   }
 }
@@ -63,14 +65,26 @@ body {
 
 .sn-primary-btn {
   color: #fff;
-  background-color: #6fb0be;
-  border-color: #6fb0be;
+  background-color: @theme-color;
+  border-color: @theme-color;
   &:hover,
   &:focus {
     color: #fff;
-    background-color: #52a9bb;
-    border-color: #52a9bb;
+    background-color: @theme-color-deep;
+    border-color: @theme-color-deep;
     cursor: pointer;
   }
+}
+
+.el-date-table td.end-date span, .el-date-table td.start-date span {
+  background-color: @theme-color
+}
+
+.el-date-table td.today span {
+  color: @theme-color-deep;
+}
+
+.mgt4{
+  margin-top: 4px !important;
 }
 </style>
